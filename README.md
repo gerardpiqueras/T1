@@ -1,30 +1,32 @@
-Primera tasca APA 2023: Anàlisi fitxer de so
-============================================
+# Primera tasca APA 2023: Anàlisi fitxer de so
 
 ## Nom i cognoms: Gerard Piqueras Codina
 
-
-
-## Representació temporal i freqüencial de senyals d'àudio.
+## Representació temporal i freqüencial de senyals d'àudio
 
 ### Domini temporal
 
 Per llegir, escriure i representar un fitxer en format `*.wav` en python podem fem servir els següents mòduls:
 
 - Numpy:
-```python
-import numpy as np
-```
-- Matplotlib: 
-```python
-import matplotlib.pyplot as plt
-```
-- Soundfile:
-```python
-import soundfile as sf
-```
 
-Per **crear** i **guardar** a un fitxer un senyal sinusoidal de freqüència `fx Hz`, digitalitzat a `fm Hz`, de durada `T` segons i amplitud 
+    ```python
+    import numpy as np
+    ```
+
+- Matplotlib:
+
+    ```python
+    import matplotlib.pyplot as plt
+    ```
+
+- Soundfile:
+
+    ```python
+    import soundfile as sf
+    ```
+
+Per **crear** i **guardar** a un fitxer un senyal sinusoidal de freqüència `fx Hz`, digitalitzat a `fm Hz`, de durada `T` segons i amplitud
 `A` fem:
 
 ```python
@@ -57,11 +59,11 @@ plt.show()                                # Visualització de l'objecte gràfic.
 
 El resultat del gràfic és:
 
-<img src="img/sinusoide.png" width="480" align="center">
+![5 periodes de la sinusoide](img/sinusoide.png)
 
 > Nota: Si es treballa amb ipython, es pot escriure %matplotlib i no cal posar el plt.show() per veure gràfics
 
-El senyal es pot **escoltar (reproduir)** directament des de python important un entorn de treball amb els dispositius de so, com per 
+El senyal es pot **escoltar (reproduir)** directament des de python important un entorn de treball amb els dispositius de so, com per
 exemple `sounddevice`:
 
 ```python
@@ -71,7 +73,7 @@ sd.play(x, fm)                # Reproducció d'àudio
 
 ### Domini transformat
 
-Domini transformat. Els senyals es poden analitzar en freqüència fent servir la Transformada Discreta de Fourier. 
+Domini transformat. Els senyals es poden analitzar en freqüència fent servir la Transformada Discreta de Fourier.
 
 La funció que incorpora el paquet `numpy` al submòdul `fft` és `fft`:
 
@@ -98,16 +100,14 @@ plt.ylabel('$\phi_x[k]$')             # Etiqueta de la fase en Latex
 plt.show()                            # Per mostrar els grafics
 ```
 
-<img src="img/TF.png" width="480" align="center">
+![Transformada del senyal de Ls=90 mostres](img/TF.png)
 
-Proves i exercicis a fer i entregar
------------------------------------
+## Proves i exercicis a fer i entregar
 
 1. Reprodueix l'exemple fent servir diferents freqüències per la sinusoide. Al menys considera $f_x = 4$ kHz, a banda d'una
     freqüència pròpia en el marge audible. Comenta els resultats.
 
-2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat 
-    (`x_r, fm = sf.read('nom_fitxer.wav')`).
+2. Modifica el programa per considerar com a senyal a analitzar el senyal del fitxer wav que has creat (`x_r, fm = sf.read('nom_fitxer.wav')`).
 
     - Insereix a continuació una gràfica que mostri 5 períodes del senyal i la seva transformada.
 
@@ -121,33 +121,31 @@ Proves i exercicis a fer i entregar
     - Com pots identificar l'amplitud de la sinusoide a partir de la representació de la transformada?
       Comprova-ho amb el senyal generat.
 
-> NOTES:
->
-> - Per representar en dB has de fer servir la fórmula següent:
->
-> $X_{dB}(f) = 20\log_{10}\left(\frac{\left|X(f)\right|}{\max(\left|X(f)\right|}\right)$
->
-> - La relació entre els valors de l'índex k i la freqüència en Hz és:
->
-> $f_k = \frac{k}{N} f_m$
+    > NOTES:
+    >
+    > - Per representar en dB has de fer servir la fórmula següent:
+    >
+    > $X_{dB}(f) = 20\log_{10}\left(\frac{\left|X(f)\right|}{\max(\left|X(f)\right|}\right)$
+    >
+    > - La relació entre els valors de l'índex k i la freqüència en Hz és:
+    >
+    > $f_k = \frac{k}{N} f_m$
 
-4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity). 
+4. Tria un fitxer d'àudio en format wav i mono (el pots aconseguir si en tens amb altres formats amb el programa Audacity).
     Llegeix el fitxer d'àudio i comprova:
 
     - Freqüència de mostratge.
     - Nombre de mostres de senyal.
     - Tria un segment de senyal de 25ms i insereix una gráfica amb la seva evolució temporal.
-    - Representa la seva transformada en dB en funció de la freqüència, en el marge $f_m\le f\le f_m/2$.
+    - Representa la seva transformada en dB en funció de la freqüència, en el marge $0\le f\le f_m/2$.
     - Quines son les freqüències més importants del segment triat?
 
-
-Entrega
--------
+## Entrega
 
 - L'alumne ha de respondre a totes les qüestions formulades en aquest mateix fitxer, README.md.
-    - El format del fitxer es l'anomenat *Markdown* que permet generar textos amb capacitats gràfiques (com ara *cursiva*, **negreta**,
-      fòrmules matemàtiques, taules, etc.), sense perdre la llegibilitat en mode text.
-    - Disposa d'una petita introducció a llenguatge de Markdown al fitxer `MARKDOWN.md`.
+  - El format del fitxer es l'anomenat *Markdown* que permet generar textos amb capacitats gràfiques (com ara *cursiva*, **negreta**,
+  fòrmules matemàtiques, taules, etc.), sense perdre la llegibilitat en mode text.
+  - Disposa d'una petita introducció a llenguatge de Markdown al fitxer `MARKDOWN.md`.
 - El repositori GitHub ha d'incloure un fitxer amb tot el codi necesari per respondre les qüestions i dibuixar les gràfiques.
 - El nom del fitxer o fitxers amb el codi ha de començar amb les inicials de l'alumne (per exemple, `fvp_codi.py`).
 - Recordéu ficar el el vostre nom complet a l'inici del fitxer o fitxers amb el codi i d'emplar el camp `Nom i cognoms` a dalt de tot
